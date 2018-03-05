@@ -19,10 +19,15 @@ module.exports = {
     redirect: {
       callback: '/callback'
     },
+    api: {
+      endpoints: {
+        user: { url: '/api/user' }
+      }
+    },
     strategies: {
       local: {
         endpoints: {
-          login: { propertyName: 'token.accessToken' }
+          user: { url: '/api/user' }
         }
       },
       auth0: {
@@ -44,6 +49,12 @@ module.exports = {
       },
       twitter: {
         client_id: 'FAJNuxjMTicff6ciDKLiZ4t0D'
+      },
+      facebookApi: {
+        authorization_endpoint: '/api/auth/social/facebook'
+      },
+      googleApi: {
+        authorization_endpoint: '/api/auth/social/google'
       }
     }
   }
