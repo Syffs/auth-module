@@ -27,6 +27,10 @@ const jwtExpiration = '3600'
 
 const callback = 'http://localhost:3000/callback'
 
+const generateRandomId = () => {
+  return Math.random().toString(36).substring(2, 15)
+}
+
 const generateUserToken = (username) => {
   return jwt.sign({
     username
@@ -43,9 +47,9 @@ var passport = (passport) => {
   // https://graph.facebook.com/v2.12/debug_token?input_token=
   passport.use(new FacebookStrategy(
     facebook, function (accessToken, refreshToken, json, profile, done) {
-      let user = users.getUserByExternalId('facebook', profile.id);
+      let user = users.getUserByExternalId('facebook', profile.id)
       if (!user) {
-        user = users.createUser(profile.emails[0].value, 'facebook', profile.id);
+        user = users.createUser(profile.emails[0].value, 'facebook', profile.id)
       }
 
       return done(null, user)
@@ -53,7 +57,7 @@ var passport = (passport) => {
 
   passport.use(new GoogleStrategy(
     google, (accessToken, refreshToken, json, profile, done) => {
-      let user = users.getUserByExternalId('google', profile.id);
+      let user = users.getUserByExternalId('google', profile.id)
       if (!user) {
         user = users.createUser(profile.emails[0].value, 'google', profile.id)
       }
@@ -69,5 +73,6 @@ module.exports = {
   google,
   jwtSecret,
   generateUserToken,
-  sendUserToken
+  sendUserToken,
+  generateRandomId
 }
