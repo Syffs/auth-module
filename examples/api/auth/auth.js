@@ -7,7 +7,6 @@ const users = require( '../model/users')
 /**
  * Refer to doc for facebook profile fields
  * @ref https://developers.facebook.com/docs/graph-api/reference/v2.12/user
- * @type {{clientID: string, clientSecret: string, callbackURL: string, profileFields: [string,string,string,string,string,string,string,string,string,string]}}
  */
 const facebook = {
   clientID: '1671464192946675',
@@ -32,19 +31,9 @@ const generateUserToken = (username) => {
   return jwt.sign({
     username
   }, jwtSecret)
-  // jsonwebtoken.sign(
-  //   {
-  //     username,
-  //     picture: 'https://github.com/nuxt.png',
-  //     name: 'User ' + username,
-  //     scope: ['test', 'user']
-  //   },
-  //   'dummy'
-  // )
 }
 
 const sendUserToken = (req, res) => {
-  console.log("SendUserToken ", req.user)
   const accessToken = generateUserToken(req.user.name)
   res.redirect(callback + '?access_token=' + accessToken)
 }
@@ -58,10 +47,7 @@ var passport = (passport) => {
       if (!user) {
         user = users.createUser(profile.emails[0].value, 'facebook', profile.id);
       }
-      console.log("accessToken: ", accessToken)
-      console.log("refreshToken: ", refreshToken)
-      console.log("json: ", json)
-      console.log("profile", profile)
+
       return done(null, user)
     }))
 
@@ -71,10 +57,7 @@ var passport = (passport) => {
       if (!user) {
         user = users.createUser(profile.emails[0].value, 'google', profile.id)
       }
-      console.log("accessToken: ", accessToken)
-      console.log("refreshToken: ", refreshToken)
-      // console.log("profile: ", profile)
-      console.log("json: ", json)
+
       return done(null, user)
     }))
 }
