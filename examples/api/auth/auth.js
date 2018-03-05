@@ -2,7 +2,7 @@ const FacebookStrategy = require('passport-facebook').Strategy
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 const jwt = require('jsonwebtoken')
 
-const users = require( './users')
+const users = require( '../model/users')
 
 /**
  * Refer to doc for facebook profile fields
