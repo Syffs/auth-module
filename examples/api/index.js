@@ -5,6 +5,7 @@ const expressJwt = require('express-jwt')
 const passport = require('passport')
 
 const auth = require('./auth')
+const pro = require('./pro')
 const users = require('./model/users').userDB
 
 // Create app
@@ -27,6 +28,7 @@ app.use(
     path: [
       /\/api\/auth\/social\/*/,
       '/api/auth/login',
+      '/api/pro/login',
       '/api/users' // Testing purpose
     ]
   })
@@ -34,6 +36,7 @@ app.use(
 
 // -- Routes --
 app.use('/auth', auth.router)
+app.use('/pro', pro)
 
 // [GET] get all users for testing purpose only
 app.get('/users', (req, res) => {
