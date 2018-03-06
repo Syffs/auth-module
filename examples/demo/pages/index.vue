@@ -5,6 +5,7 @@
       <div class="mt-1">
         <template v-if="$auth.$state.loggedIn">
           <b-btn class="ml-3" variant="info" to="/secure">Secure</b-btn>
+          <b-btn v-if="$auth.state.strategy==='pro'" class="ml-3" variant="info" to="/secure-pro">SecurePro</b-btn>
           <b-btn class="ml-3" variant="danger" @click="$auth.logout()">Logout</b-btn>
         </template>
         <b-btn variant="success" v-else to="/login">Login</b-btn>

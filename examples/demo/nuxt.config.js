@@ -30,6 +30,28 @@ module.exports = {
           user: { url: '/api/user' }
         }
       },
+      pro: {
+        _scheme: 'local',
+        endpoints: {
+          login: {
+            url: '/api/pro/login',
+            method: 'post',
+            propertyName: 'access_token'
+          },
+          logout: {
+            url: '/api/pro/logout',
+            method: 'post'
+          },
+          user: {
+            url: '/api/user',
+            method: 'get',
+            propertyName: 'user'
+          }
+        },
+        redirect: {
+          login: '/login-pro'
+        }
+      },
       auth0: {
         domain: 'nuxt-auth.auth0.com',
         client_id: 'q8lDHfBLJ-Fsziu7bf351OcYQAIe3UJv'

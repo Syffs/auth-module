@@ -9,6 +9,7 @@
           <b-nav-item to="/" exact>Home</b-nav-item>
           <b-nav-item to="/public">Public</b-nav-item>
           <b-nav-item to="/secure">Secure</b-nav-item>
+          <b-nav-item to="/secure-pro">SecurePro</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <template v-if="$auth.$state.loggedIn">
@@ -19,6 +20,7 @@
           </template>
           <template v-else>
             <b-dropdown-item to="/login">Login</b-dropdown-item>
+            <b-dropdown-item to="/login-pro">LoginPro</b-dropdown-item>
           </template>
         </b-navbar-nav>
       </b-collapse>
