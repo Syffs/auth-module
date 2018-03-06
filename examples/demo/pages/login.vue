@@ -20,7 +20,7 @@
         </b-form-group>
 
         <div class="text-center">
-          <b-btn @click="login" variant="primary" block>Login</b-btn>
+          <b-btn @click="loginWith('local')" variant="primary" block>Login</b-btn>
         </div>
         </form>
       </b-card>
@@ -78,11 +78,11 @@ export default {
     }
   },
   methods: {
-    async login() {
+    async loginWith(strategy) {
       this.error = null
 
       return this.$auth
-        .loginWith('local', {
+        .loginWith(strategy, {
           data: {
             username: this.username,
             password: this.password
