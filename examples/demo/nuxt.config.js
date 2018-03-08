@@ -49,7 +49,8 @@ module.exports = {
           }
         },
         redirect: {
-          login: '/login-pro'
+          login: '/login-pro',
+          home: '/secure-pro'
         }
       },
       auth0: {
